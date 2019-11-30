@@ -8,6 +8,13 @@ public abstract class Jet {
 	private double speed;
 	private int range;
 	private long price;
+	private double flightTime;
+	
+	// C o n s t r c u t o r s
+	
+	public Jet() {
+		
+	}
 	
 	
 	public Jet(String model, double speed, int range, long price) {
@@ -16,9 +23,18 @@ public abstract class Jet {
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
+		this.flightTime = range/speed;
 	}
 
-
+	// M e t h o d s
+	
+	
+	
+	
+	public void fly() {
+	//	System.out.println(Jet.toString());
+	}
+	
 	public String getModel() {
 		return model;
 	}
@@ -62,8 +78,11 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		return "Jet [" + (model != null ? "model=" + model + ", " : "") + "speed=" + speed + ", range=" + range
-				+ ", price=" + price + "]";
+				+ ", price=" + price + ", flightTime=" + flightTime + "]";
 	}
+
+
+
 	
 	
 	
