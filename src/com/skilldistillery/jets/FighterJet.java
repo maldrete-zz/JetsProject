@@ -23,7 +23,7 @@ public class FighterJet extends Jet implements CombatReady {
 	@Override
 	public void fly() {
 		super.fly();
-		System.out.println("Model " + this.getModel() + " is in the air flying and has a range of " + this.getRange());
+		System.out.println(this.getModel() + " is in the air flying and has a range of " + this.getRange());
 	}
 	
 	

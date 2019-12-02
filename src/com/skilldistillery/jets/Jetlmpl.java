@@ -5,7 +5,7 @@ public class Jetlmpl extends Jet {
 	@Override
 	public void fly() {
 		super.fly();
-		System.out.println("Model " + this.getModel() + " is in the air flying and has " + this.getRange()
+		System.out.println(this.getModel() + " is in the air flying and has " + this.getRange()
 		+ " hours of flight time left");
 	}
 

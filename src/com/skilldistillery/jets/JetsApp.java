@@ -4,17 +4,59 @@ import java.util.List;
 import java.util.Scanner;
 
 public class JetsApp {
+	public List<Jet> jets = af.parseFile();
 	public static Scanner kb = new Scanner(System.in); 
 	private static AirField af = new AirField();
 
 	public static void main(String[] args) {
 		JetsApp app = new JetsApp();
-//		 app.printFleet(af.parseFile());
-//		 app.fly(af.parseFile());
+//		app.printFleet(af.parseFile());
+//		app.fly(af.parseFile());
 //		app.fastestJet(af.parseFile());
 //		app.longestRange(af.parseFile());
 // 		app.addJet(af.jets);
-		app.removeJet(af.parseFile());
+//		app.removeJet(af.parseFile());
+		app.run();
+		
+		
+		
+	}
+	
+	public void run() {
+		int choice;
+		
+		do {
+			menu();
+			choice = kb.nextInt();
+			
+		switch(choice) {
+			case 1:
+				printFleet(jets);
+				break;
+			case 2:
+				fly(jets);
+				break;
+			case 3:
+				fastestJet(jets);
+				break;
+			case 4:
+				longestRange(jets);
+				break;
+			case 5:
+				loadCargo(jets);
+				break;
+			case 6:
+				dogFight(jets);
+				break;
+			case 7:
+				addJet(jets);
+				break;
+			case 8:
+				removeJet(jets);
+				break;
+		}
+		} while(choice!= 9);
+		
 		
 		
 		
@@ -28,7 +70,8 @@ public class JetsApp {
 		System.out.println("5: Load all Cargo Jets");
 		System.out.println("6: Dogfight!");
 		System.out.println("7: Add a jet to Fleet");
-		System.out.println("Remove a jet from Fleet");
+		System.out.println("8: Remove a jet from Fleet");
+		System.out.println("9: Quit");
 
 	}
 
@@ -44,6 +87,7 @@ public class JetsApp {
 		for (Jet jet : jetList) {
 			jet.fly();
 		}
+		System.out.println();
 	}
 
 	public void fastestJet(List<Jet> jetList) {
@@ -58,7 +102,8 @@ public class JetsApp {
 
 		}
 
-		System.out.println(fastestJet.toString());
+		System.out.println("Fastest Jet: " + fastestJet.toString());
+		System.out.println();
 	}
 
 	public void longestRange(List<Jet> jetList) {
@@ -70,33 +115,36 @@ public class JetsApp {
 				longestRangeJet = jet;
 			}
 		}
-		System.out.println(longestRangeJet.toString());
+		System.out.println("longest range " + longestRangeJet.toString());
+		System.out.println();
 	}
 
-	public void cargoCarrier(List<Jet> jetList) {
+	public void loadCargo(List<Jet> jetList) {
 		for (Jet jet : jetList) {
 			if (jet instanceof CargoCarrier) {
 				((CargoCarrier) jet).loadCargo();
 			}
 		}
+		System.out.println();
 	}
 
-	public void combatReady(List<Jet> jetList) {
+	public void dogFight(List<Jet> jetList) {
 		for (Jet jet : jetList) {
 			if (jet instanceof CombatReady) {
 				((CombatReady) jet).fight();
 			}
 		}
+		System.out.println();
 	}
 	
 	public void addJet(List<Jet> jetList) {
-		String model;
+		int model;
 		double speed;
 		int range;
 		long price;
 		Jet newJet = null;
 		System.out.println("Add new Jet.\n 1: Fighter\n 2: Cargo\n 3: lmpl");
-		model = kb.next();
+		model = kb.nextInt();
 		
 		System.out.println("Add the speed of the jet (ex 122.45):");
 		speed = kb.nextDouble();
@@ -109,14 +157,14 @@ public class JetsApp {
 		System.out.println("Add price of jet (ex 2990177)");
 		price = kb.nextLong();
 		
-		if(model.equalsIgnoreCase("Fighter")) {
-			newJet = new FighterJet(model, speed, range, price);
+		if(model == 1) {
+			newJet = new FighterJet("fighter", speed, range, price);
 		}
-		else if (model.equalsIgnoreCase("Cargo")) {
-			newJet = new CargoPlane(model, speed, range, price);
+		else if (model == 2) {
+			newJet = new CargoPlane("CargoPlane", speed, range, price);
 		}
-		else if (model.equalsIgnoreCase("lmpl")) {
-			newJet = new Jetlmpl(model, speed, range, price);
+		else if (model == 3) {
+			newJet = new Jetlmpl("Jetlmpl", speed, range, price);
 		}
 		
 		af.jets.add(newJet);

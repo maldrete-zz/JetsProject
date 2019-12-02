@@ -31,12 +31,12 @@ public class AirField {
 					jets.add(newJet);
 				}
 				if (jetInfo[0].equals("CargoPlane")) {
-					newJet = new FighterJet(jetInfo[0], Double.parseDouble(jetInfo[1]), Integer.parseInt(jetInfo[2]),
+					newJet = new CargoPlane(jetInfo[0], Double.parseDouble(jetInfo[1]), Integer.parseInt(jetInfo[2]),
 							Long.parseLong(jetInfo[3]));
 					jets.add(newJet);
 				}
 				if (jetInfo[0].equals("Jetlmpl")) {
-					newJet = new FighterJet(jetInfo[0], Double.parseDouble(jetInfo[1]), Integer.parseInt(jetInfo[2]),
+					newJet = new Jetlmpl(jetInfo[0], Double.parseDouble(jetInfo[1]), Integer.parseInt(jetInfo[2]),
 							Long.parseLong(jetInfo[3]));
 					jets.add(newJet);
 				}
